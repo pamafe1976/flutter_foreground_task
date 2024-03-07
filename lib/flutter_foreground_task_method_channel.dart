@@ -30,18 +30,19 @@ class MethodChannelFlutterForegroundTask extends FlutterForegroundTaskPlatform {
       return true;
     }
 
+    // Quito esta parte porque el pedido de permiso lo maneja la aplicacion
     // for Android 13
-    if (Platform.isAndroid && await attachedActivity) {
-      try {
-        final NotificationPermission notificationPermissionStatus =
-            await checkNotificationPermission();
-        if (notificationPermissionStatus != NotificationPermission.granted) {
-          await requestNotificationPermission();
-        }
-      } catch (_) {
-        //
-      }
-    }
+    // if (Platform.isAndroid && await attachedActivity) {
+    //   try {
+    //     final NotificationPermission notificationPermissionStatus =
+    //         await checkNotificationPermission();
+    //     if (notificationPermissionStatus != NotificationPermission.granted) {
+    //       await requestNotificationPermission();
+    //     }
+    //   } catch (_) {
+    //     //
+    //   }
+    // }
 
     final options = <String, dynamic>{
       if (Platform.isAndroid)
